@@ -9,6 +9,8 @@ import SwiftUI
 
 struct SignInScreen: View {
     
+    @EnvironmentObject var status: Status
+    
     @State var presenter = false
     
     @State var userId = ""
@@ -37,7 +39,8 @@ struct SignInScreen: View {
                     .cornerRadius(25)
                 
                 Button(action: {
-                    
+                    UserDefaults.standard.set("ogabekdev", forKey: "userid")
+                    status.listen()
                 }, label: {
                     HStack {
                         Spacer()
